@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ task.title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ task.description }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <mat-form-field>
+      <mat-select [value]="task.status" (selectionChange)="onStatusChange($event.value)">
+        <mat-option value="todo">To Do</mat-option>
+        <mat-option value="in-progress">In Progress</mat-option>
+        <mat-option value="done">Done</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-icon-button color="warn" (click)="onDelete()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

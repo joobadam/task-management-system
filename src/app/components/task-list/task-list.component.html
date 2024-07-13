@@ -1,0 +1,9 @@
+<div *ngIf="loading$ | async">Loading tasks...</div>
+<div *ngIf="!(loading$ | async)">
+  <app-task-item 
+    *ngFor="let task of tasks$ | async"
+    [task]="task"
+    (delete)="onDeleteTask($event)"
+    (update)="onUpdateTask($event)">
+  </app-task-item>
+</div>
