@@ -17,7 +17,8 @@ export class TaskFormComponent {
     this.taskForm = this.fb.group({
       title: ['', Validators.required],
       description: [''],
-      status: ['todo', Validators.required]
+      status: ['todo', Validators.required],
+      dueDate: ['', Validators.required]
     });
   }
 
@@ -25,10 +26,12 @@ export class TaskFormComponent {
     if (this.taskForm.valid) {
       const newTask: Task = {
         id: uuidv4(),
-        ...this.taskForm.value
+        ...this.taskForm.value,
+        dueDate: this.taskForm.value.dueDate.toISOString().split('T')[0]
       };
       this.store.dispatch(TaskActions.addTask({ task: newTask }));
       this.taskForm.reset({ status: 'todo' });
     }
   }
 }
+

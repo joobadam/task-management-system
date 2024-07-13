@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Task } from '../../models/task.model';
 import { selectAllTasks, selectTasksLoading } from '../../store/task.selectors';
 import * as TaskActions from '../../store/task.actions';
@@ -8,19 +9,21 @@ import * as TaskActions from '../../store/task.actions';
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-/*   styleUrls: ['./task-list.component.css'] */
+  styleUrls: ['./task-list.component.scss']
 })
 export class TaskListComponent implements OnInit {
-  tasks$: Observable<Task[]>;
+  tasks: Task[] = [];
   loading$: Observable<boolean>;
 
   constructor(private store: Store) {
-    this.tasks$ = this.store.select(selectAllTasks);
     this.loading$ = this.store.select(selectTasksLoading);
   }
 
   ngOnInit(): void {
     this.store.dispatch(TaskActions.loadTasks());
+    this.store.select(selectAllTasks).subscribe(tasks => {
+      this.tasks = tasks;
+    });
   }
 
   onDeleteTask(id: string): void {
@@ -29,5 +32,11 @@ export class TaskListComponent implements OnInit {
 
   onUpdateTask(task: Task): void {
     this.store.dispatch(TaskActions.updateTask({ task }));
+  }
+
+  onDrop(event: CdkDragDrop<Task[]>) {
+    const newTasks = [...this.tasks];
+    moveItemInArray(newTasks, event.previousIndex, event.currentIndex);
+    this.store.dispatch(TaskActions.reorderTasks({ tasks: newTasks }));
   }
 }

@@ -13,6 +13,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppComponent } from './app.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
@@ -20,6 +22,7 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
 import { taskReducer } from './store/task.reducer';
 import { TaskEffects } from './store/task.effects';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { TaskEffects } from './store/task.effects';
     BrowserAnimationsModule,
     ReactiveFormsModule, 
     FormsModule,
+    DragDropModule,
     StoreModule.forRoot({ tasks: taskReducer }),
     EffectsModule.forRoot([TaskEffects]),
     StoreDevtoolsModule.instrument({
@@ -45,7 +49,10 @@ import { TaskEffects } from './store/task.effects';
     MatInputModule,
     MatSelectModule,
     MatToolbarModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,10 +18,10 @@ export class TaskEffects {
       })
     )
   );
-
+  
   saveTasks$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(TaskActions.addTask, TaskActions.updateTask, TaskActions.deleteTask),
+      ofType(TaskActions.addTask, TaskActions.updateTask, TaskActions.deleteTask, TaskActions.reorderTasks),
       withLatestFrom(this.store.select(selectAllTasks)),
       map(([action, tasks]) => {
         this.localStorageService.saveTasks(tasks);
@@ -29,6 +29,7 @@ export class TaskEffects {
       })
     )
   );
+
 
   constructor(
     private actions$: Actions,

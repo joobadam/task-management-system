@@ -27,7 +27,11 @@ export const taskReducer = createReducer(
   }),
   on(TaskActions.deleteTask, (state, { id }) => {
     return adapter.removeOne(id, state);
+  }),
+  on(TaskActions.reorderTasks, (state, { tasks }) => {
+    return adapter.setAll(tasks, state);
   })
+
 );
 
 export const { selectAll, selectIds } = adapter.getSelectors();
