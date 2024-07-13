@@ -15,6 +15,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
@@ -22,14 +25,15 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
 import { TaskItemComponent } from './components/task-item/task-item.component';
 import { taskReducer } from './store/task.reducer';
 import { TaskEffects } from './store/task.effects';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import { TaskDetailsComponent } from './components/task-details/task-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TaskListComponent,
     TaskFormComponent,
-    TaskItemComponent
+    TaskItemComponent,
+    TaskDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -51,8 +55,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatToolbarModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatNativeDateModule
-    
+    MatNativeDateModule,
+    MatBottomSheetModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
