@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material/bottom-sheet';
+import { MatDialog } from '@angular/material/dialog';
 import { Task } from '../../../../shared/models/task.model';
 import { selectAllTasks, selectTasksLoading } from '../../../../store/task.selectors';
 import * as TaskActions from '../../../../store/task.actions';
-import { Router } from '@angular/router';
+import { TaskDetailsComponent } from '../task-details/task-details.component';
+import { TaskFormComponent } from '../task-form/task-form.component';
 
 @Component({
   selector: 'app-task-list',
@@ -16,7 +19,11 @@ export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
   loading$: Observable<boolean>;
 
-  constructor(private store: Store, private router: Router) {
+  constructor(
+    private store: Store,
+    private bottomSheet: MatBottomSheet,
+    private dialog: MatDialog
+  ) {
     this.loading$ = this.store.select(selectTasksLoading);
   }
 
@@ -41,7 +48,23 @@ export class TaskListComponent implements OnInit {
     this.store.dispatch(TaskActions.reorderTasks({ tasks: newTasks }));
   }
 
-  openTaskDetails(taskId: string) {
-    this.router.navigate(['/tasks', taskId]);
+  openTaskDetails(task: Task) {
+    const config: MatBottomSheetConfig = {
+      data: { task }
+    };
+    this.bottomSheet.open(TaskDetailsComponent, config);
+  }
+
+  openNewTaskForm() {
+    const dialogRef = this.dialog.open(TaskFormComponent, {
+      width: '600px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.store.dispatch(TaskActions.addTask({ task: result }));
+      }
+    });
   }
 }

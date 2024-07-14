@@ -1,17 +1,24 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from '../../shared/shared.module';
-import { LandingComponent } from './landing.component';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { RouterModule } from '@angular/router';
 
-const routes: Routes = [
-  { path: '', component: LandingComponent }
-];
+import { LandingComponent } from './landing.component';
 
 @NgModule({
   declarations: [LandingComponent],
   imports: [
-    SharedModule,
-    RouterModule.forChild(routes)
+    CommonModule,
+    ReactiveFormsModule,
+    MatStepperModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    RouterModule.forChild([{ path: '', component: LandingComponent }])
   ]
 })
 export class LandingModule { }

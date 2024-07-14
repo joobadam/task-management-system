@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { UserAvatar, UserService } from './services/user.service';
+
 import { Observable } from 'rxjs';
+import { UserAvatar, UserService } from 'src/app/services/user.service';
 
 
 @Component({

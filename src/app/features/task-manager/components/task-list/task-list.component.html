@@ -1,21 +1,14 @@
-<div class="task-manager-container">
-  <div class="task-list">
-    <h2>Task List</h2>
-    <button mat-raised-button color="primary" routerLink="new">Add New Task</button>
-    <div *ngIf="loading$ | async">Loading tasks...</div>
-    <div *ngIf="!(loading$ | async)" cdkDropList (cdkDropListDropped)="onDrop($event)">
-      <app-task-item 
-        *ngFor="let task of tasks"
-        [task]="task"
-        (delete)="onDeleteTask($event)"
-        (update)="onUpdateTask($event)"
-        (click)="openTaskDetails(task.id)"
-        cdkDrag>
-        <div class="drag-placeholder" *cdkDragPlaceholder></div>
-      </app-task-item>
-    </div>
-  </div>
-  <div class="task-details">
-    <router-outlet></router-outlet>
-  </div>
+<button mat-raised-button color="primary" (click)="openNewTaskForm()">Add New Task</button>
+
+<div *ngIf="loading$ | async">Loading tasks...</div>
+<div *ngIf="!(loading$ | async)" cdkDropList (cdkDropListDropped)="onDrop($event)">
+  <app-task-item 
+    *ngFor="let task of tasks"
+    [task]="task"
+    (delete)="onDeleteTask($event)"
+    (update)="onUpdateTask($event)"
+    (click)="openTaskDetails(task)"
+    cdkDrag>
+    <div class="drag-placeholder" *cdkDragPlaceholder></div>
+  </app-task-item>
 </div>

@@ -1,9 +1,24 @@
-<mat-toolbar color="primary">
-  <span>Task Management System</span>
-  <nav>
-    <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-    <a mat-button routerLink="/tasks" routerLinkActive="active">Tasks</a>
-    <a mat-button routerLink="/schedule" routerLinkActive="active">Schedule</a>
-  </nav>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [opened]="isOpen" (openedChange)="isOpen = $event">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" (click)="closeSidenav()">Home</a>
+      <a mat-list-item routerLink="/tasks" (click)="closeSidenav()">Tasks</a>
+      <a mat-list-item routerLink="/schedule" (click)="closeSidenav()">Schedule</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Task Management System</span>
+      <span class="spacer"></span>
+      <ng-container *ngIf="userAvatar$ | async as userAvatar">
+        <span class="user-name">{{ userAvatar.name }}</span>
+        <img [src]="userAvatar.avatarUrl" alt="User Avatar" class="user-avatar">
+      </ng-container>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
