@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
-import { Task } from '../../models/task.model';
+import { Task } from '../../../../shared/models/task.model';
 import { TaskDetailsComponent } from '../task-details/task-details.component';
 
 @Component({

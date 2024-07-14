@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { v4 as uuidv4 } from 'uuid';
-import { Task } from '../../models/task.model';
-import * as TaskActions from '../../store/task.actions';
+import { Task } from '../../../../shared/models/task.model';
+import * as TaskActions from '../../../../store/task.actions';
 
 @Component({
   selector: 'app-task-form',

@@ -1,0 +1,16 @@
+<h2>Task Details</h2>
+<mat-nav-list>
+  <a mat-list-item>
+    <h3 matLine>{{ data.task.title }}</h3>
+    <p matLine>{{ data.task.description }}</p>
+  </a>
+  <a mat-list-item>
+    <span matLine>Status: {{ data.task.status }}</span>
+  </a>
+  <a mat-list-item>
+    <span matLine>Due Date: {{ data.task.date | date:'mediumDate' }}</span>
+  </a>
+</mat-nav-list>
+<div class="bottom-sheet-actions">
+  <button mat-button (click)="closeBottomSheet()">Close</button>
+</div>

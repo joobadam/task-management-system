@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Task } from '../../models/task.model';
-import { selectAllTasks, selectTasksLoading } from '../../store/task.selectors';
-import * as TaskActions from '../../store/task.actions';
+import { Task } from '../../../../shared/models/task.model';
+import { selectAllTasks, selectTasksLoading } from '../../../../store/task.selectors';
+import * as TaskActions from '../../../../store/task.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-list',
@@ -15,7 +16,7 @@ export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
   loading$: Observable<boolean>;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router) {
     this.loading$ = this.store.select(selectTasksLoading);
   }
 
@@ -38,5 +39,9 @@ export class TaskListComponent implements OnInit {
     const newTasks = [...this.tasks];
     moveItemInArray(newTasks, event.previousIndex, event.currentIndex);
     this.store.dispatch(TaskActions.reorderTasks({ tasks: newTasks }));
+  }
+
+  openTaskDetails(taskId: string) {
+    this.router.navigate(['/tasks', taskId]);
   }
 }
