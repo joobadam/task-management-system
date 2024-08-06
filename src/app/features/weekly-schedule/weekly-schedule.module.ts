@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { WeeklyScheduleComponent } from './weekly-schedule.component';
 import { RouterModule, Routes } from '@angular/router';
-import { TaskDetailsComponent } from '../task-manager/components/task-details/task-details.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+
 
 const routes: Routes = [
   { path: '', component: WeeklyScheduleComponent }
@@ -12,6 +14,8 @@ const routes: Routes = [
   declarations: [WeeklyScheduleComponent],
   imports: [
     SharedModule,
+    MatCardModule,
+    MatChipsModule,
     RouterModule.forChild(routes)
   ],
 })

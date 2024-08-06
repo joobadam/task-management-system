@@ -9,6 +9,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     DragDropModule,
     MatBottomSheetModule,
     MatDialogModule,
-    MatStepperModule
+    MatStepperModule,
+    MatIconModule,
   ],
   exports: [TaskDetailsComponent]
 })

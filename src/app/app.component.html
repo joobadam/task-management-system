@@ -1,24 +1,26 @@
-<mat-sidenav-container>
-  <mat-sidenav #sidenav [opened]="isOpen" (openedChange)="isOpen = $event">
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="over" class="sidenav">
     <mat-nav-list>
-      <a mat-list-item routerLink="/" (click)="closeSidenav()">Home</a>
-      <a mat-list-item routerLink="/tasks" (click)="closeSidenav()">Tasks</a>
-      <a mat-list-item routerLink="/schedule" (click)="closeSidenav()">Schedule</a>
+      <a mat-list-item routerLink="/" (click)="sidenav.close()">Home</a>
+      <a mat-list-item routerLink="/tasks" (click)="sidenav.close()">Tasks</a>
+      <a mat-list-item routerLink="/schedule" (click)="sidenav.close()">Schedule</a>
     </mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button mat-icon-button (click)="toggleSidenav()">
+    <mat-toolbar class="toolbar">
+      <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Task Management System</span>
+      <span>TASKS</span>
       <span class="spacer"></span>
-      <ng-container *ngIf="userAvatar$ | async as userAvatar">
-        <span class="user-name">{{ userAvatar.name }}</span>
-        <img [src]="userAvatar.avatarUrl" alt="User Avatar" class="user-avatar">
-      </ng-container>
+      <span class="user-name">{{ (userAvatar$ | async)?.name }}</span>
+      <img [src]="(userAvatar$ | async)?.avatarUrl" alt="User Avatar" class="user-avatar">
     </mat-toolbar>
-    <router-outlet></router-outlet>
+
+    <div class="content-container">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+  

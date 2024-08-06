@@ -1,16 +1,21 @@
 <div class="schedule-container">
-  <h2>Weekly Schedule</h2>
+  <h2 class="schedule-title">Weekly Schedule</h2>
   <div class="week-grid">
-    <ng-container *ngIf="weekSchedule$ | async as weekSchedule">
-      <div *ngFor="let daySchedule of weekSchedule" class="day-column">
+    <div class="day-column" *ngFor="let daySchedule of weekSchedule$ | async">
+      <div class="day-header">
         <h3>{{ daySchedule.day }}</h3>
-        <div *ngFor="let task of daySchedule.tasks" class="task-item">
-          <button mat-button (click)="openTaskDetails(task)">
-            {{ task.title }}
-          </button>
-        </div>
-        <p *ngIf="daySchedule.tasks.length === 0">No tasks for this day</p>
       </div>
-    </ng-container>
+      <div class="task-list">
+        <mat-card class="task-item" *ngFor="let task of daySchedule.tasks" (click)="openTaskDetails(task)">
+          <mat-card-content>
+            <h4>{{ task.title }}</h4>
+            <mat-chip-set>
+              <mat-chip [ngClass]="task.status">{{ task.status }}</mat-chip>
+            </mat-chip-set>
+          </mat-card-content>
+        </mat-card>
+        <p *ngIf="daySchedule.tasks.length === 0" class="no-tasks">No tasks for this day</p>
+      </div>
+    </div>
   </div>
 </div>

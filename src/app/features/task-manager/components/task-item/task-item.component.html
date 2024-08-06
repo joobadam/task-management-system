@@ -1,10 +1,12 @@
-<mat-card>
+<mat-card [style.background-color]="cardColor">
   <mat-card-header>
     <mat-card-title>{{ task.title }}</mat-card-title>
   </mat-card-header>
-  <mat-card-actions>
-    <button mat-button (click)="openDetails()">Details</button>
-    <button mat-button (click)="onDelete()">Delete</button>
+  <div class="button-container">
+    <button mat-button class="detail-btn" (click)="openDetails($event)">Details</button>
+    <button mat-icon-button class="delete-btn" (click)="onDelete()">
+      <mat-icon>delete</mat-icon>
+    </button>
     <mat-form-field>
       <mat-select [value]="task.status" (selectionChange)="onStatusChange($event.value)">
         <mat-option value="todo">To Do</mat-option>
@@ -12,5 +14,5 @@
         <mat-option value="done">Done</mat-option>
       </mat-select>
     </mat-form-field>
-  </mat-card-actions>
+  </div>
 </mat-card>

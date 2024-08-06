@@ -1,18 +1,24 @@
+<div class="container">
 <h2>Task Details</h2>
+<mat-card-header>
+  <mat-card-title>{{ data.task.title }}</mat-card-title>
+</mat-card-header>
 <mat-nav-list>
   <a mat-list-item>
-    <span matLine><strong>Title:</strong> {{ data.task.title }}</span>
-  </a>
-  <a mat-list-item>
-    <span matLine><strong>Description:</strong> {{ data.task.description }}</span>
+    <span matLine
+      ><strong>Description:</strong> {{ data.task.description }}</span
+    >
   </a>
   <a mat-list-item>
     <span matLine><strong>Status:</strong> {{ data.task.status }}</span>
   </a>
   <a mat-list-item>
-    <span matLine><strong>Date:</strong> {{ data.task.date | date:'medium' }}</span>
+    <span matLine
+      ><strong>Date:</strong> {{ data.task.date | date : "medium" }}</span
+    >
   </a>
 </mat-nav-list>
-<div>
-  <button mat-button (click)="closeBottomSheet()">Close</button>
+<div class="btn-container">
+  <button class="colcor-btn" (click)="closeBottomSheet()">Close</button>
+</div>
 </div>

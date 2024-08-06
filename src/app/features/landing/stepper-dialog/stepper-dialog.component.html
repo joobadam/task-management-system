@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>Set Up Your Profile</h2>
+<mat-dialog-content>
+  <mat-vertical-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="nameControl">
+      <ng-template matStepLabel>Enter your name</ng-template>
+      <form [formGroup]="avatarForm">
+        <mat-form-field appearance="outline">
+          <mat-label>Your Name</mat-label>
+          <input matInput formControlName="name" placeholder="Enter your name" required>
+          <mat-error *ngIf="nameControl.hasError('required')">Name is required</mat-error>
+          <mat-error *ngIf="nameControl.hasError('minlength')">Name must be at least 2 characters long</mat-error>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" matStepperNext [disabled]="nameControl.invalid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="avatarIdControl">
+      <ng-template matStepLabel>Choose your avatar</ng-template>
+      <form [formGroup]="avatarForm">
+        <div class="avatar-grid">
+          <div *ngFor="let avatar of avatarOptions" 
+               class="avatar-option"
+               [class.selected]="avatarIdControl.value === avatar.id"
+               (click)="selectAvatar(avatar.id)">
+            <img [src]="avatar.url" [alt]="'Avatar ' + avatar.id" class="avatar-image">
+          </div>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext [disabled]="avatarIdControl.invalid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Complete</ng-template>
+      <h3>You're all set!</h3>
+      <p>Click the button below to start managing your tasks.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">Get Started</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</mat-dialog-content>

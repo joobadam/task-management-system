@@ -1,1 +1,17 @@
-/*# sourceMappingURL=task-form.component.css.map */
+button {
+    display: flex;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    color: #fff !important;
+    background-color: #ff4081;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    margin: 5px 0px;
+  }
+  
+button:hover {
+    background-color: #e91e63;
+    transform: scale(1.05);
+    cursor: pointer;
+  }

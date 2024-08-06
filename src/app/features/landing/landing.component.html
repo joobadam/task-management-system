@@ -1,42 +1,13 @@
-<div class="landing-container">
-  <h1>Welcome to Task Management System</h1>
-  <p>Set up your avatar to get started!</p>
-
-  <form [formGroup]="avatarForm">
-    <mat-horizontal-stepper linear #stepper>
-      <mat-step [stepControl]="nameControl!">
-        <ng-template matStepLabel>Enter your name</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Name" formControlName="name" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </mat-step>
-
-      <mat-step [stepControl]="avatarIdControl!">
-        <ng-template matStepLabel>Choose your avatar</ng-template>
-        <div class="avatar-grid">
-          <div *ngFor="let avatar of avatarOptions" class="avatar-option">
-            <img [src]="avatar.url" [alt]="'Avatar ' + avatar.id" 
-                 (click)="avatarIdControl?.setValue(avatar.id)"
-                 [class.selected]="avatarIdControl?.value === avatar.id">
-          </div>
-        </div>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </mat-step>
-
-      <mat-step>
-        <ng-template matStepLabel>Let's get started!</ng-template>
-        <p>You're all set! Click the button below to start managing your tasks.</p>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-raised-button color="primary" (click)="onSubmit()">Get Started</button>
-        </div>
-      </mat-step>
-    </mat-horizontal-stepper>
-  </form>
+<div class="hero">
+  <div class="hero-mesh-gradient"></div>
+  <div class="container">
+    <div class="hero-content" @fadeIn>
+      <h1 class="hero-title">TASK <span class="hero-span">MANAGEMENT</span> SYSTEM</h1>
+      <p class="hero-subtitle">So that you don’t forget your weekly tasks</p>
+      <a class="hero-button" (click)="openStepperDialog()">Get Started</a>
+    </div>
+  </div>
+  <div class="bottom-image">
+    <img src="assets/table.png" alt="Task Management Illustration">
+  </div>
 </div>

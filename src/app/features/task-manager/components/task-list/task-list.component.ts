@@ -13,7 +13,7 @@ import { TaskFormComponent } from '../task-form/task-form.component';
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.scss']
+  styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
   tasks: Task[] = [];
@@ -57,7 +57,7 @@ export class TaskListComponent implements OnInit {
 
   openNewTaskForm() {
     const dialogRef = this.dialog.open(TaskFormComponent, {
-      width: '600px',
+      width: '70%',
       disableClose: true
     });
 

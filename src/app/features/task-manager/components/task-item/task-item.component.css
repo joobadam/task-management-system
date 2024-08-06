@@ -1,1 +1,39 @@
-/*# sourceMappingURL=task-item.component.css.map */
+mat-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3px;
+  overflow: hidden;
+  padding: 5px;
+}
+
+mat-form-field {
+  transform: translateY(10px);
+}
+
+mat-form-field {
+  width: 120px;
+}
+
+mat-select {
+  width: 120px;
+}
+
+.detail-btn {
+    background-color: rgb(38, 219, 219);
+  color: white !important;
+}
+
+.delete-btn{
+    background-color: rgb(255, 0, 0);
+    color: white !important;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}

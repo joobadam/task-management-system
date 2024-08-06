@@ -9,6 +9,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatChipsModule } from '@angular/material/chips';
+
 
 @NgModule({
   declarations: [],
@@ -22,7 +24,8 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatChipsModule
   ],
   exports: [
     CommonModule,
@@ -34,7 +37,8 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatChipsModule
   ]
 })
 export class SharedModule { }

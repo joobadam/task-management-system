@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './task-manager.component.html',
-  styleUrl: './task-manager.component.scss'
+  styleUrl: './task-manager.component.css'
 })
 export class TaskManagerComponent {
 

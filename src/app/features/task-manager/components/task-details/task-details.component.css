@@ -1,4 +1,25 @@
-.bottom-sheet-actions {
-  padding: 8px 16px;
-  text-align: right;
-}/*# sourceMappingURL=task-details.component.css.map */
+button{
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #ff4081;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.3s;
+  border: none;
+}
+
+button:hover{
+  background-color: #e91e63;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.btn-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

@@ -1,4 +1,4 @@
-<button mat-raised-button color="primary" (click)="openNewTaskForm()">Add New Task</button>
+<button class="new-task" (click)="openNewTaskForm()">Add New Task</button>
 
 <div *ngIf="loading$ | async">Loading tasks...</div>
 <div *ngIf="!(loading$ | async)" cdkDropList (cdkDropListDropped)="onDrop($event)">
@@ -7,8 +7,8 @@
     [task]="task"
     (delete)="onDeleteTask($event)"
     (update)="onUpdateTask($event)"
-    (click)="openTaskDetails(task)"
+    (details)="openTaskDetails($event)"
     cdkDrag>
     <div class="drag-placeholder" *cdkDragPlaceholder></div>
   </app-task-item>
-</div>
+</div> 
